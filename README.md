@@ -21,7 +21,6 @@ A lightweight, production-ready Android logging plugin built in Kotlin. Logs are
 
 ### 1. Add Dependency
 
-> **Coming Soon**: Maven Central / JitPack support  
 Until then, clone this repo and include it in your project manually.
 
 ---
@@ -45,8 +44,6 @@ LogsPlugin.init(
 )
 ```
 
-
-⸻
 
 ### 3. Log Events
 ```kotlin
@@ -123,12 +120,3 @@ If offline, logs are saved locally and synced automatically when online again.
 - 🔒 gRPC communication is **TLS-encrypted** by default
 - 🧩 Minimal metadata is collected (**customizable per use case**)
 - 🚫 No personal data is stored unless **explicitly added to custom fields**
-
----
-
-## 🚧 TODO / Roadmap
-
-- ✅ **Publish to Maven Central**
-- ⏳ **Add retry logic with exponential backoff**
-- ⏳ **Support threshold-based batching** (e.g., after 100 logs)
-- ⏳ **Add filtering for log levels** (e.g., upload only `ERROR`)

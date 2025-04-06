@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.com.google.devtools.ksp)
     alias(libs.plugins.protobuf)
+    id("maven-publish")
 }
 android {
     namespace = "com.devappsys.logsplugin"
@@ -10,7 +11,13 @@ android {
 
     defaultConfig {
         minSdk = 24
-        testOptions.targetSdk = 35
+        lint {
+            targetSdk = 35
+        }
+
+        testOptions {
+            targetSdk = 35
+        }
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -33,7 +40,23 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    sourceSets {
+        maybeCreate("main").java.srcDirs("build/generated/source/proto/main/java")
+    }
 }
+
+publishing {
+    publications {
+        create<MavenPublication>("release") {
+            from(components["release"])
+            groupId = "com.github.adarsh-devappsys"
+            artifactId = "android-logs-plugin"
+            version = "0.1.0"
+        }
+    }
+}
+
 
 dependencies {
     implementation(libs.androidx.core.ktx)

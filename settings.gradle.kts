@@ -20,4 +20,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Logs Plugin"
-include(":plugin")
+include(":app")
